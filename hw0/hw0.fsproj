@@ -14,10 +14,11 @@
       <Compile Include="LogicParser.fs" />
       <Compile Include="LogicLexer.fs" />
       <Compile Include="Program.fs" />
+      <FsYacc Include="parser.fsp" />
+      <FsLex Include="lexer.fsl" />
+      <Content Include="Makefile" />
       <Content Include="input.txt" />
-      <Content Include="lexer.fsl" />
       <Content Include="output.txt" />
-      <Content Include="parser.fsp" />
     </ItemGroup>
 
     <ItemGroup>
