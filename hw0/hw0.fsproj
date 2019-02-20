@@ -3,26 +3,30 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.1</TargetFramework>
+        <CompileDependsOn>CallFsLex;CallFsYacc;$(CompileDependsOn)</CompileDependsOn>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="LogicTree.fs" />
+        <Compile Include="LogicTree.fs"/>
+        <FsYacc Include="LogicParser.fsy">
+            <Message>Calling FsYacc</Message>
+            <OtherFlags>--module LogicParser</OtherFlags>
+        </FsYacc>
+        <Compile Include="LogicParser.fsi"/>
+        <Compile Include="LogicParser.fs"/>
+        <FsLex Include="LogicLexer.fsl">
+            <Message>Calling FsLex</Message>
+            <OtherFlags>--unicode</OtherFlags>
+        </FsLex>
+        <Compile Include="LogicLexer.fs"/>
+        <Compile Include="Program.fs"/>
+        <Content Include="Makefile"/>
+        <Content Include="input.txt"/>
+        <Content Include="output.txt"/>
     </ItemGroup>
-
+    
     <ItemGroup>
-      <Compile Include="LogicParser.fsi" />
-      <Compile Include="LogicParser.fs" />
-      <Compile Include="LogicLexer.fs" />
-      <Compile Include="Program.fs" />
-      <FsYacc Include="parser.fsp" />
-      <FsLex Include="lexer.fsl" />
-      <Content Include="Makefile" />
-      <Content Include="input.txt" />
-      <Content Include="output.txt" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="FsLexYacc" Version="7.0.6" />
+        <PackageReference Include="FsLexYacc" Version="7.0.6"/>
     </ItemGroup>
 
 </Project>
