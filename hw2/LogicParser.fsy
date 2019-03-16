@@ -1,0 +1,35 @@
+%{
+  open LogicTree
+%}
+%token <string> VAR
+%token IMPL AND OR NOT
+%token OPEN CLOSE
+%token EOF
+%token COMMA TURNSTILE 
+%right IMPL
+%left OR
+%left AND
+%left COMMA
+%left TURNSTILE 
+%nonassoc NOT
+%start body
+%start header
+%type <LogicTree.tree> body
+%type <LogicTree.tree list * LogicTree.tree> header
+%%        
+body:
+        expr EOF                            { $1 }
+expr:
+        | VAR                               { Var ($1) }
+        | OPEN expr CLOSE                   { $2 }     
+        | NOT expr                          { Neg ($2) }  
+        | expr IMPL expr                    { Binop (Impl, $1, $3) }
+        | expr AND expr                     { Binop (Conj, $1, $3) }
+        | expr OR expr                      { Binop (Disj, $1, $3) }
+        
+header:
+        | expressions TURNSTILE expr EOF    { ($1, $3) }
+        | TURNSTILE expr EOF                { ([], $2) }
+expressions:
+        | expr                              { [$1] }
+        | expr COMMA expressions            { $1 :: $3 }        

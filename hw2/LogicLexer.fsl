@@ -6,7 +6,9 @@ open LogicParser
 open Microsoft.FSharp.Text.Lexing
 }
 
-let variable = ['A' - 'Z']+ ['A' - 'Z' '0' - '9']*
+let variable = ['A' - 'Z']+ ['A' - 'Z' '0' - '9' '’' ''']*
+let whitespace = [' ' '\t']+
+let newline = ['\n' '\r']+ 
 
 rule tokenize = parse
         | variable      { VAR(LexBuffer<_>.LexemeString lexbuf) }
@@ -16,4 +18,7 @@ rule tokenize = parse
         | "!"           { NOT }
         | "("           { OPEN }
         | ")"           { CLOSE }
+        | "|-"          { TURNSTILE }
+        | ","           { COMMA }
+        | whitespace    { tokenize lexbuf }
         | eof           { EOF }  

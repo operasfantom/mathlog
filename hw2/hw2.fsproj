@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <CompileDependsOn>CallFsLex;CallFsYacc;$(CompileDependsOn)</CompileDependsOn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="LogicTree.fs" />
+        <FsLex Include="LogicLexer.fsl">
+          <Message>Calling FsLex</Message>
+          <OtherFlags>--unicode</OtherFlags>
+        </FsLex>
+        <FsYacc Include="LogicParser.fsy">
+            <Message>Calling FsYacc</Message>
+            <OtherFlags>--module LogicParser</OtherFlags>
+        </FsYacc>
+        <Compile Include="LogicParser.fsi" />
+        <Compile Include="LogicParser.fs" />
+        <Compile Include="LogicLexer.fs" />
+        <Compile Include="Axioms.fs" />
+        <Compile Include="Processing.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="Makefile" />
+        <Content Include="input.txt" />
+        <Content Include="output.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FsLexYacc" Version="7.0.6" />
+    </ItemGroup>
+</Project>

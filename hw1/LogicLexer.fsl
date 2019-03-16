@@ -1,0 +1,19 @@
+{
+module LogicLexer
+
+open System
+open LogicParser   
+open Microsoft.FSharp.Text.Lexing
+}
+
+let variable = ['A' - 'Z']+ ['A' - 'Z' '0' - '9' '’']*
+
+rule tokenize = parse
+        | variable      { VAR(LexBuffer<_>.LexemeString lexbuf) }
+        | "->"          { IMPL }
+        | "&"           { AND }
+        | "|"           { OR }
+        | "!"           { NOT }
+        | "("           { OPEN }
+        | ")"           { CLOSE }
+        | eof           { EOF }  

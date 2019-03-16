@@ -1,10 +1,19 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "hw0", "hw0\hw0.fsproj", "{123004E7-A059-4FC1-BA77-927EF4A6B01B}"
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "hw1", "hw1\hw1.fsproj", "{123004E7-A059-4FC1-BA77-927EF4A6B01B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "hw2", "hw2\hw2.fsproj", "{D5B0BFA7-742D-4BE1-B536-1773C9CF1660}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5B0BFA7-742D-4BE1-B536-1773C9CF1660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B0BFA7-742D-4BE1-B536-1773C9CF1660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B0BFA7-742D-4BE1-B536-1773C9CF1660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B0BFA7-742D-4BE1-B536-1773C9CF1660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{123004E7-A059-4FC1-BA77-927EF4A6B01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{123004E7-A059-4FC1-BA77-927EF4A6B01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
